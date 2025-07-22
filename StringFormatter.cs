@@ -8,21 +8,19 @@ namespace PointsBet_Backend_Online_Code_Test;
 public class StringFormatter
 {
     private string[] _items;
-    private string _quote;
 
-    public StringFormatter(string[] items, string quote)
+    public StringFormatter(string[] items)
     {
         _items = items;
-        _quote = quote;
     }
 
-    public string ToCommaSeparatedList()
+    public string ToCommaSeparatedListWithQuote()
     {
         if (_items.Length == 0)
         {
             return string.Empty;
         }
-
-        return string.Join(", ", _items.Select(item => $"{_quote}{item}{_quote}"));
+        
+        return string.Join(", ", _items.Select(item => $"\"{item}\""));
     }
 }
